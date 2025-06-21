@@ -3,6 +3,7 @@ import {
   ThemedButton,
   ThemedText,
 } from '@/components/atoms';
+import {SafeScreen} from '@/components/template';
 import {config, scaleHeight} from '@/theme';
 import React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
@@ -14,7 +15,7 @@ interface WelcomeProps {
 
 const Welcome = ({onNext}: WelcomeProps) => {
   return (
-    <View style={styles.container}>
+    <SafeScreen containerStyle={styles.container}>
       <AnimatedListItemView index={0}>
         <ThemedText size="fs_30" weight="Nunito_bold">
           Welcome to DailyVita
@@ -45,7 +46,7 @@ const Welcome = ({onNext}: WelcomeProps) => {
           <ThemedText color="white">Get started</ThemedText>
         </ThemedButton>
       </AnimatedListItemView>
-    </View>
+    </SafeScreen>
   );
 };
 

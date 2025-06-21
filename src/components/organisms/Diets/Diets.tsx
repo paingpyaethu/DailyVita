@@ -111,7 +111,7 @@ const Diets = ({data, onNext, onBack}: DietsProps) => {
 };
 
 const styles = StyleSheet.create({
-  container: {padding: config.spacing[20]},
+  container: {flex: 1, padding: config.spacing[20]},
   row: {
     flexDirection: 'row',
     alignItems: 'center',

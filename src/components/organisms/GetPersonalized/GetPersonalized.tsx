@@ -107,6 +107,7 @@ const GetPersonalized = ({onNext, onBack}: GetPersonalizedProps) => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     padding: config.spacing[20],
   },
 });
