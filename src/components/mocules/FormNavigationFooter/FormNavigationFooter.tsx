@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {ThemedButton, ThemedText} from '@/components/atoms';
 import {config} from '@/theme';
+import Animated, {FadeInDown} from 'react-native-reanimated';
 
 interface FormNavigationFooterProps {
   onBack: () => void;
@@ -10,7 +11,7 @@ interface FormNavigationFooterProps {
 
 const FormNavigationFooter = ({onBack, onNext}: FormNavigationFooterProps) => {
   return (
-    <View style={styles.footer}>
+    <Animated.View entering={FadeInDown} style={styles.footer}>
       <ThemedButton onPress={onBack} type="transparent">
         <ThemedText color="secondary" weight="Nunito_bold">
           Back
@@ -21,7 +22,7 @@ const FormNavigationFooter = ({onBack, onNext}: FormNavigationFooterProps) => {
           Next
         </ThemedText>
       </ThemedButton>
-    </View>
+    </Animated.View>
   );
 };
 
