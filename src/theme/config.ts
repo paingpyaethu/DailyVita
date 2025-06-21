@@ -29,6 +29,8 @@ const metricSizes = {
   '26': scaledSize(26),
   '28': scaledSize(28),
   '30': scaledSize(30),
+  '32': scaledSize(32),
+  '34': scaledSize(34),
   '40': scaledSize(40),
   '45': scaledSize(45),
   '50': scaledSize(50),
@@ -122,6 +124,14 @@ const themeFontStyles = {
   fs_24: {
     fontSize: metricSizes[24],
     lineHeight: metricSizes[30],
+  } as TextStyle,
+  fs_28: {
+    fontSize: metricSizes[28],
+    lineHeight: metricSizes[32],
+  } as TextStyle,
+  fs_30: {
+    fontSize: metricSizes[30],
+    lineHeight: metricSizes[34],
   } as TextStyle,
 };
 
