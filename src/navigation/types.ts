@@ -1,7 +1,7 @@
 import type {StackScreenProps} from '@react-navigation/stack';
 
 export type RootStackParamList = {
-  OnboardingScreen: undefined;
+  OnboardingFlowScreen: undefined;
   HomeScreen: undefined;
 };
 

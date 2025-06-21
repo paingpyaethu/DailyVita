@@ -3,7 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {RootStackParamList} from '@/navigation/types';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {View} from 'react-native';
-import {OnboardingScreen} from '@/screens';
+import {OnboardingFlowScreen} from '@/screens';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -14,8 +14,8 @@ const ApplicationNavigator = () => {
         <NavigationContainer>
           <Stack.Navigator screenOptions={{headerShown: false}}>
             <Stack.Screen
-              name="OnboardingScreen"
-              component={OnboardingScreen}
+              name="OnboardingFlowScreen"
+              component={OnboardingFlowScreen}
             />
           </Stack.Navigator>
         </NavigationContainer>
