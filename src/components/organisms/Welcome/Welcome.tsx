@@ -6,7 +6,7 @@ import {
 import {SafeScreen} from '@/components/template';
 import {config, scaleHeight} from '@/theme';
 import React from 'react';
-import {View, StyleSheet, Image} from 'react-native';
+import {StyleSheet, Image} from 'react-native';
 import {FadeInLeft} from 'react-native-reanimated';
 
 interface WelcomeProps {
