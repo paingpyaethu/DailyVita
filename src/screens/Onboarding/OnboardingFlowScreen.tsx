@@ -1,4 +1,5 @@
 import {Welcome} from '@/components/organisms';
+import Diets from '@/components/organisms/Diets/Diets';
 import HealthConcerns from '@/components/organisms/HealthConcerns/HealthConcerns';
 import {useAppDispatch} from '@/hooks/useAppDispatch';
 import {useAppSelector} from '@/hooks/useAppSelector';
@@ -36,6 +37,9 @@ const OnboardingFlowScreen = () => {
           onBack={back}
           onNext={handleNext}
         />
+      )}
+      {step === 2 && (
+        <Diets data={formData} onBack={back} onNext={handleNext} />
       )}
     </View>
   );

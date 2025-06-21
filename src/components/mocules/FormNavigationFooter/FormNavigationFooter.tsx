@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
     marginBottom: config.spacing[60],
   },
   next: {
-    marginLeft: config.spacing[16],
-    paddingHorizontal: config.spacing[26],
+    marginLeft: config.spacing[40],
+    paddingHorizontal: config.spacing[30],
   },
 });
 

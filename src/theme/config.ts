@@ -31,6 +31,7 @@ const metricSizes = {
   '30': scaledSize(30),
   '32': scaledSize(32),
   '34': scaledSize(34),
+  '35': scaledSize(35),
   '40': scaledSize(40),
   '45': scaledSize(45),
   '50': scaledSize(50),
