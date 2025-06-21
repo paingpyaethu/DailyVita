@@ -5,9 +5,9 @@ export type FormData = {
   prioritizedConcerns: string[];
   diets: string[];
   allergies: string[];
-  sunExposure: boolean | null;
-  smoke: boolean | null;
-  alcohol: '0-1' | '2-5' | '5+' | null;
+  is_daily_exposure: boolean;
+  is_smoke: boolean;
+  alcohol: '0-1' | '2-5' | '5+';
 };
 
 const initialState: FormData = {
@@ -15,9 +15,9 @@ const initialState: FormData = {
   prioritizedConcerns: [],
   diets: [],
   allergies: [],
-  sunExposure: null,
-  smoke: null,
-  alcohol: null,
+  is_daily_exposure: false,
+  is_smoke: false,
+  alcohol: '0-1',
 };
 
 const onboardingSlice = createSlice({

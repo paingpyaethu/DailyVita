@@ -18,7 +18,7 @@ const PrioritizedList = ({items, onReorder}: PrioritizedListProps) => {
       keyExtractor={item => item}
       onDragEnd={({data}) => onReorder(data)}
       renderItem={({item, drag, isActive, getIndex}) => (
-        <Animated.View entering={FadeInDown.delay((getIndex() ?? 0) * 400)}>
+        <Animated.View entering={FadeInDown.delay((getIndex() ?? 0) * 100)}>
           <TouchableOpacity
             style={[styles.item, isActive && {opacity: 0.5}]}
             onLongPress={drag}>

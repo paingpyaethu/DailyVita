@@ -5,21 +5,33 @@ import {config} from '@/theme';
 import Animated, {FadeInDown} from 'react-native-reanimated';
 
 interface FormNavigationFooterProps {
-  onBack: () => void;
+  onBack?: () => void;
   onNext: () => void;
+  nextBtnLabel?: string;
+  hideBack?: boolean;
 }
 
-const FormNavigationFooter = ({onBack, onNext}: FormNavigationFooterProps) => {
+const FormNavigationFooter = ({
+  onBack,
+  onNext,
+  nextBtnLabel,
+  hideBack,
+}: FormNavigationFooterProps) => {
   return (
     <Animated.View entering={FadeInDown} style={styles.footer}>
-      <ThemedButton onPress={onBack} type="transparent">
-        <ThemedText color="secondary" weight="Nunito_bold">
-          Back
-        </ThemedText>
-      </ThemedButton>
-      <ThemedButton onPress={onNext} type="secondary" style={styles.next}>
+      {!hideBack && (
+        <ThemedButton
+          onPress={onBack || (() => {})}
+          type="transparent"
+          style={styles.backBtn}>
+          <ThemedText color="secondary" weight="Nunito_bold">
+            Back
+          </ThemedText>
+        </ThemedButton>
+      )}
+      <ThemedButton onPress={onNext} type="secondary" style={styles.nextBtn}>
         <ThemedText weight="Nunito_bold" color="white">
-          Next
+          {nextBtnLabel || 'Next'}
         </ThemedText>
       </ThemedButton>
     </Animated.View>
@@ -33,8 +45,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: config.spacing[60],
   },
-  next: {
-    marginLeft: config.spacing[40],
+  backBtn: {
+    marginRight: config.spacing[40],
+  },
+  nextBtn: {
     paddingHorizontal: config.spacing[30],
   },
 });

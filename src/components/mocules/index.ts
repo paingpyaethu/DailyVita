@@ -3,3 +3,4 @@ export {default as SelectableTagList} from './HealthConcerns/SelectableTagList/S
 export {default as FormNavigationFooter} from './FormNavigationFooter/FormNavigationFooter';
 export {default as ProgressBar} from './ProgressBar/ProgressBar';
 export {default as DietOptionRow} from './Diets/DietOptionRow/DietOptionRow';
+export {default as RadioGroup} from './RadioGroup/RadioGroup';
