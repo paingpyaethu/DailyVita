@@ -10,6 +10,7 @@ export const colors = {
   lightGray: '#f4f4f4',
   darkGray: '#505050',
   background: '#d3f3e5',
+  backgroundLight: '#e9fbf4',
 };
 
 export type Palette = (typeof colors)[keyof typeof colors];
