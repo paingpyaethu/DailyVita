@@ -11,6 +11,7 @@ export const colors = {
   darkGray: '#505050',
   background: '#d3f3e5',
   backgroundLight: '#e9fbf4',
+  border: '#e5e5e5',
 };
 
 export type Palette = (typeof colors)[keyof typeof colors];

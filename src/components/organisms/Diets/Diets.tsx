@@ -1,19 +1,22 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {useForm} from 'react-hook-form';
 import {z} from 'zod';
 import {zodResolver} from '@hookform/resolvers/zod';
-import {FormNavigationFooter, ProgressBar} from '@/components/mocules';
+import {
+  DietOptionRow,
+  FormNavigationFooter,
+  ProgressBar,
+} from '@/components/mocules';
 import {config} from '@/theme';
 import {SafeScreen} from '@/components/template';
 import {ThemedText} from '@/components/atoms';
-import {
-  CheckBoxIcon,
-  InfoCircleIcon,
-  CheckBoxOutlineIcon,
-} from '@/utils/svg/icon.common';
 import {DIET_OPTIONS} from '@/constants/dummy';
-import Tooltip from 'react-native-walkthrough-tooltip';
+import Animated, {
+  BounceIn,
+  FadeInDown,
+  FadeOutUp,
+} from 'react-native-reanimated';
 
 const schema = z.object({
   diets: z.array(z.string()).min(1, 'Please select at least one option.'),
@@ -61,60 +64,33 @@ const Diets = ({data, onNext, onBack}: DietsProps) => {
 
   return (
     <SafeScreen containerStyle={styles.container}>
-      <ThemedText
-        size="fs_20"
-        weight="Nunito_semibold"
-        marginTop={config.spacing[20]}
-        marginBottom={config.spacing[10]}>
-        Select the diets you follow.
-        <ThemedText color="secondary" weight="Nunito_bold">
-          *
+      <Animated.View entering={BounceIn}>
+        <ThemedText
+          size="fs_20"
+          weight="Nunito_semibold"
+          marginTop={config.spacing[20]}
+          marginBottom={config.spacing[10]}>
+          Select the diets you follow.
+          <ThemedText color="secondary" weight="Nunito_bold">
+            *
+          </ThemedText>
         </ThemedText>
-      </ThemedText>
+      </Animated.View>
 
       {DIET_OPTIONS.map((option, index) => (
-        <View key={option.key} style={styles.row}>
-          <TouchableOpacity
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: config.spacing[3],
-            }}
-            onPress={() => toggleOption(option.key)}>
-            {selected.includes(option.key) ? (
-              <CheckBoxIcon />
-            ) : (
-              <CheckBoxOutlineIcon />
-            )}
-            <ThemedText weight="Nunito_semibold">{option.key}</ThemedText>
-          </TouchableOpacity>
-          {option.key !== 'None' && (
-            <Tooltip
-              isVisible={tooltipIndex === index}
-              content={
-                <ThemedText size="fs_12">{option.description}</ThemedText>
-              }
-              placement="right"
-              onClose={() => setTooltipIndex(null)}
-              showChildInTooltip={false}
-              arrowStyle={{marginTop: -config.spacing[35]}}
-              contentStyle={{
-                bottom: config.spacing[35],
-                height:
-                  option.description.length > 70
-                    ? config.spacing[120]
-                    : config.spacing[60],
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-              childContentSpacing={config.spacing[10]}
-              backgroundColor="rgba(0,0,0,0.1)">
-              <TouchableOpacity onPress={() => setTooltipIndex(index)}>
-                <InfoCircleIcon />
-              </TouchableOpacity>
-            </Tooltip>
-          )}
-        </View>
+        <Animated.View
+          key={option.key}
+          entering={FadeInDown.delay(index * 200)}
+          exiting={FadeOutUp}>
+          <DietOptionRow
+            option={option}
+            index={index}
+            selected={selected.includes(option.key)}
+            onToggle={toggleOption}
+            tooltipIndex={tooltipIndex}
+            setTooltipIndex={setTooltipIndex}
+          />
+        </Animated.View>
       ))}
 
       {errors.diets && (

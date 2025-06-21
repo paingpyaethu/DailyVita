@@ -13,6 +13,7 @@ import {ThemedText} from '@/components/atoms';
 import {z} from 'zod';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {ALL_CONCERNS} from '@/constants/dummy';
+import Animated, {BounceIn, FadeInLeft} from 'react-native-reanimated';
 
 const schema = z.object({
   healthConcerns: z
@@ -65,17 +66,19 @@ const HealthConcernsScreen = ({
 
   return (
     <SafeScreen containerStyle={styles.container}>
-      <ThemedText
-        size="fs_20"
-        weight="Nunito_semibold"
-        marginTop={config.spacing[20]}
-        marginBottom={config.spacing[10]}>
-        Select the top health concerns.
-        <ThemedText color="secondary" weight="Nunito_bold">
-          *
-        </ThemedText>{' '}
-        (upto 5)
-      </ThemedText>
+      <Animated.View entering={BounceIn}>
+        <ThemedText
+          size="fs_20"
+          weight="Nunito_semibold"
+          marginTop={config.spacing[20]}
+          marginBottom={config.spacing[10]}>
+          Select the top health concerns.
+          <ThemedText color="secondary" weight="Nunito_bold">
+            *
+          </ThemedText>{' '}
+          (upto 5)
+        </ThemedText>
+      </Animated.View>
       <View>
         <SelectableTagList
           options={ALL_CONCERNS}
@@ -85,13 +88,15 @@ const HealthConcernsScreen = ({
       </View>
 
       {prioritized.length > 0 && (
-        <ThemedText
-          size="fs_18"
-          weight="Nunito_bold"
-          marginBottom={config.spacing[10]}
-          marginTop={config.spacing[20]}>
-          Prioritize
-        </ThemedText>
+        <Animated.View entering={FadeInLeft.delay(100)}>
+          <ThemedText
+            size="fs_18"
+            weight="Nunito_bold"
+            marginBottom={config.spacing[10]}
+            marginTop={config.spacing[20]}>
+            Prioritize
+          </ThemedText>
+        </Animated.View>
       )}
       <Controller
         control={control}

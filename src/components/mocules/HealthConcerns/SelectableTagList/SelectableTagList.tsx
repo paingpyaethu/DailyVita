@@ -2,6 +2,7 @@ import {ThemedText} from '@/components/atoms';
 import {colors, config} from '@/theme';
 import React from 'react';
 import {TouchableOpacity, View, StyleSheet} from 'react-native';
+import Animated, {FadeInDown, FadeOutUp} from 'react-native-reanimated';
 
 interface SelectableTagListProps {
   options: string[];
@@ -16,17 +17,21 @@ const SelectableTagList = ({
 }: SelectableTagListProps) => {
   return (
     <View style={styles.container}>
-      {options.map(item => {
+      {options.map((item, index) => {
         const isSelected = selected.includes(item);
         return (
-          <TouchableOpacity
+          <Animated.View
             key={item}
-            onPress={() => onToggle(item)}
-            style={[styles.tag, isSelected && styles.tagSelected]}>
-            <ThemedText size="fs_14" color={isSelected ? 'white' : 'black'}>
-              {item}
-            </ThemedText>
-          </TouchableOpacity>
+            entering={FadeInDown.delay(index * 40)}
+            exiting={FadeOutUp}>
+            <TouchableOpacity
+              onPress={() => onToggle(item)}
+              style={[styles.tag, isSelected && styles.tagSelected]}>
+              <ThemedText size="fs_14" color={isSelected ? 'white' : 'black'}>
+                {item}
+              </ThemedText>
+            </TouchableOpacity>
+          </Animated.View>
         );
       })}
     </View>
